@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import Button from "../../components/Button";
@@ -14,7 +13,6 @@ export default function LoginForm() {
   });
 
   const { login } = useAuth();
-  const navigate = useNavigate();
 
   const hldChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -22,17 +20,13 @@ export default function LoginForm() {
 
   const hdlSubmitForm = (e) => {
     e.preventDefault();
-    login(input)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: error.response.data.message,
-        });
+    login(input).catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.response.data.message,
       });
+    });
   };
 
   return (

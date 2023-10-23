@@ -4,7 +4,7 @@ export default function Menu() {
   const items = [
     ["Home", "/"],
     ["About Us", "/"],
-    ["Categories", "/"],
+    // ["Categories", "/"],
     ["Products", "/product"],
   ];
   return (

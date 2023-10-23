@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useAuth } from "../hooks/use-auth";
 import HomePage from "../pages/user/HomePage";
 import Layout from "../layouts/Layout";
 import ProfilePage from "../pages/user/ProfilePage";
@@ -10,7 +11,7 @@ import AdminReportPage from "../pages/admin/AdminReportPage";
 import AdminLayout from "../layouts/AdminLayout";
 import AdminCheckPage from "../pages/admin/AdminCheckPage";
 import RedirectIfAuthenticated from "../features/auth/RedirectIfAuthenticated";
-import Authenticated from "../features/auth/Authenticated";
+// import Authenticated from "../features/auth/Authenticated";
 
 const router = createBrowserRouter([
   {
@@ -25,11 +26,7 @@ const router = createBrowserRouter([
 
   {
     path: "/",
-    element: (
-      //<Authenticated>
-      <Layout />
-      // </Authenticated>
-    ),
+    element: <Layout />,
     children: [
       {
         path: "login",
@@ -51,7 +48,6 @@ const router = createBrowserRouter([
       },
       { path: "product", element: <ProductPage /> },
       { path: "profile", element: <ProfilePage /> },
-      //   { path: "profile/:profileId", element: <ProfilePage /> },
     ],
   },
 ]);
