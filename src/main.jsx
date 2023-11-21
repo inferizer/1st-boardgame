@@ -6,6 +6,7 @@ import AuthContextProvider from "./contexts/AuthContext.jsx";
 import ProductContextProvider from "./contexts/ProductContext.jsx";
 import AdminContextProvider from "./contexts/AdminContext.jsx";
 import ProfileContextProvider from "./contexts/ProfileContext.jsx";
+import CartContextProvider from "./contexts/CartContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ProductContextProvider>
       <AdminContextProvider>
         <ProfileContextProvider>
-          <App />
+          <CartContextProvider>
+            <App />
+          </CartContextProvider>
         </ProfileContextProvider>
       </AdminContextProvider>
     </ProductContextProvider>

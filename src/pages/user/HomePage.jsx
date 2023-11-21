@@ -1,5 +1,6 @@
 import HomeImage from "../../assets/home.png";
 import Button from "../../components/Button";
+import HeaderText from "../../components/HeaderText";
 
 export default function HomePage() {
   return (
@@ -21,7 +22,7 @@ export default function HomePage() {
       </div>
       {/* Our Boardgames */}
       <div>
-        <h1 className='font-CopperplateGothic text-6xl '>Our Boardgames</h1>
+        <HeaderText title='Our Products' />
       </div>
       <div>
         <div>
@@ -30,12 +31,12 @@ export default function HomePage() {
         <div>Recomend Boardgame</div>
       </div>
       <div>
-        <h1 className='font-CopperplateGothic text-6xl '>Our Products</h1>
+        <HeaderText title='Our Products' />
       </div>
       <div>
-        <h1 className='font-CopperplateGothic text-6xl '>
+        {/* <h1 className='font-CopperplateGothic text-6xl '>
           Frequently Asked Questions
-        </h1>
+        </h1> */}
       </div>
     </>
   );

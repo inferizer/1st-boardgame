@@ -1,7 +1,6 @@
-import Swal from "sweetalert2";
-import { TextIcon, HeartIcon } from "../../icons/Icon";
+import { TextIcon } from "../../icons/Icon";
 import useAdmin from "../../hooks/use-admin";
-export default function ModalSearchForm({ itemModal }) {
+export default function ModalSearchForm({ itemModal, setOpen }) {
   const { setCheckUpdateData } = useAdmin();
 
   const {
@@ -20,6 +19,7 @@ export default function ModalSearchForm({ itemModal }) {
     try {
       await updateProduct({ bggId, title, yearpublished, image, description });
       setCheckUpdateData(true);
+      setOpen(false);
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +39,6 @@ export default function ModalSearchForm({ itemModal }) {
 
           <div className='flex items-center justify-between px-5'>
             <div className='flex mx-auto justify-center items-center gap-3'>
-              <HeartIcon />
               <TextIcon text='+' onClick={hdlUpdateProduct} />
             </div>
           </div>

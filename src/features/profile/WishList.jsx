@@ -14,6 +14,7 @@ export default function WishList() {
     setUpdateWishList,
   } = useProfile();
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     {
       axios

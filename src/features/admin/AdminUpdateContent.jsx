@@ -39,17 +39,6 @@ export default function AdminUpdateContent() {
         <li>Price</li>
         <li className='hidden'>X</li>
       </div>
-      {updateResult.map((item, index) => (
-        <AdminUpdateItem
-          key={index}
-          id={item.id}
-          image={item.image}
-          title={item.title}
-          stock={item.stock}
-          price={item.price}
-        />
-      ))}
-
       <div className='mx-auto p-6 flex items-center justify-center '>
         <Button text='Update Stock' onClick={() => setOpen(true)} />
         <Modal
@@ -63,6 +52,16 @@ export default function AdminUpdateContent() {
           </div>
         </Modal>
       </div>
+      {updateResult.map((item, index) => (
+        <AdminUpdateItem
+          key={index}
+          id={item.id}
+          image={item.image}
+          title={item.title}
+          stock={item.stock}
+          price={item.price}
+        />
+      ))}
     </>
   );
 }

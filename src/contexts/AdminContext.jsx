@@ -7,18 +7,20 @@ export const AdminContext = createContext();
 export default function AdminContextProvider({ children }) {
   const [checkUpdateData, setCheckUpdateData] = useState(false);
   const [updateResult, setUpdateResult] = useState([]);
+  const [updateStock, setUpdateStock] = useState({
+    stock: "",
+    price: "",
+  });
   const updateProduct = async (productDetail) => {
-    const res = await axios.post("/admin/add-product", productDetail);
+    await axios.post("/admin/add-product", productDetail);
   };
 
   const deleteProduct = async (productId) => {
-    const res = await axios.delete(`/admin/delete/${productId}`);
-    // console.log(res);
+    await axios.delete(`/admin/delete/${productId}`);
   };
 
   const addStock = async (productId, updateStock) => {
-    console.log(updateStock);
-    const res = await axios.post(`admin/add-stock/${productId}`, updateStock);
+    await axios.post(`admin/add-stock/${productId}`, updateStock);
   };
 
   const contextValue = {
@@ -29,6 +31,8 @@ export default function AdminContextProvider({ children }) {
     updateProduct,
     checkUpdateData,
     setCheckUpdateData,
+    updateStock,
+    setUpdateStock,
   };
   return (
     <AdminContext.Provider value={contextValue}>

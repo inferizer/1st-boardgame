@@ -41,9 +41,17 @@ export default function AuthContextProvider({ children }) {
   const logout = () => {
     removeAccessToken();
     setAuthUser(null);
+    window.location.replace("/");
   };
 
-  const contextValue = { authUser, register, login, logout, initialLoading };
+  const contextValue = {
+    authUser,
+    setAuthUser,
+    register,
+    login,
+    logout,
+    initialLoading,
+  };
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );

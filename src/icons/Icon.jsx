@@ -135,9 +135,10 @@ export function StoreTextIcon({ id, text, onClick }) {
   );
 }
 
-export function CircleIcon({ text, onClick }) {
+export function CircleIcon({ id, text, onClick }) {
   return (
     <button
+      id={id}
       className='bg-secondary hover:bg-primary text-white rounded-full w-7 h-7 '
       onClick={onClick}
     >

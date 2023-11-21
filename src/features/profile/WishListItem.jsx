@@ -4,7 +4,6 @@ import { StoreTextIcon } from "../../icons/Icon";
 export default function WishListItem({ id, image, title }) {
   const { setUpdateWishList, removeWishList } = useProfile();
   const hldRemoveWishList = (e) => {
-    console.log(e.target.id);
     removeWishList(e.target.id);
     setUpdateWishList(true);
   };

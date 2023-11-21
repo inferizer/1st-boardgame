@@ -1,29 +1,38 @@
-import { useState, useEffect } from "react";
 import { HeartIcon, StoreTextIcon } from "../../icons/Icon";
 import useProduct from "../../hooks/use-product";
 import { useAuth } from "../../hooks/use-auth";
 import { useProfile } from "../../hooks/use-profile";
+import { useCart } from "../../hooks/use-cart";
 
-export default function ProductItem({ id, image, title, description, price }) {
-  // const [isHover, setIsHover] = useState(false);
-  const [wishList, setWishList] = useState({
-    userId: "",
-    boardgameID: "",
-  });
+export default function ProductItem({
+  id,
+  // userId,
+  image,
+  title,
+  description,
+  price,
+  stock,
+}) {
+  const { addToCart } = useCart();
   const { allproducts } = useProduct();
   const { authUser } = useAuth();
   const { addToWishList } = useProfile();
 
-  // useEffect(() => {
-  //   console.log(wishList);
-  // }, [wishList]);
-
-  const hldAddToWishlist = async (e) => {
+  const hdlAddToWishlist = async (e) => {
     try {
       const findItem = allproducts.filter((item) => e.target.id == item.id);
       const [{ id: bgid }] = findItem;
-      // setWishList({ userId: authUser.id, boardgameID: bgid });
       await addToWishList({ userId: String(authUser.id), productId: bgid });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const hdlAddToCart = async (e) => {
+    try {
+      const findResult = allproducts.filter((item) => e.target.id == item.id);
+      console.log(findResult);
+      addToCart(authUser.id, findResult[0].id);
     } catch (error) {
       console.log(error);
     }
@@ -42,11 +51,14 @@ export default function ProductItem({ id, image, title, description, price }) {
         </p>
         <p className='font-semibold p-3'>Read More...</p>
         <div className='flex items-center justify-between px-5'>
-          <h6 className='text-secondary font-bold'>{price}</h6>
-          <div className='flex  justify-center items-center gap-3'>
-            <HeartIcon text='+' id={id} onClick={hldAddToWishlist} />
-            {/* isHover={isHover} */}
-            <StoreTextIcon text='+' id={id} onClick={hldAddToWishlist} />
+          <h6 className='text-secondary font-bold'>
+            {price && price.toLocaleString("en-US")} THB
+          </h6>
+          <div className='flex justify-center items-center gap-3'>
+            <div className='hover:scale-110'>
+              <HeartIcon text='+' id={id} onClick={hdlAddToWishlist} />
+            </div>
+            <StoreTextIcon text='+' id={id} onClick={hdlAddToCart} />
           </div>
         </div>
       </div>

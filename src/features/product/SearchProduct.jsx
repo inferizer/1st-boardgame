@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ModalSearchForm from "../features/admin/ModalSearchForm";
-import Modal from "./Modal";
+import ModalSearchForm from "../../features/admin/ModalSearchForm";
+import Modal from "../../components/Modal";
 
-export default function Search() {
+export default function SearchProduct() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [Open, setOpen] = useState(false);
@@ -49,16 +49,6 @@ export default function Search() {
       console.log(error);
     }
   };
-  // const fetchData = async (query) => {
-  //   try {
-  //     if (query === "") return true;
-  //     const res = await axios.get(`/api/search?query=${query}`);
-  //     const { item } = res.data.items;
-  //     setSearchResult(item);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const hdlInputChange = (e) => {
     setSearch(e.target.value);

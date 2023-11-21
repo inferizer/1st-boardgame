@@ -3,7 +3,7 @@ import MenuItem from "./MenuItem";
 export default function Menu() {
   const items = [
     ["Home", "/"],
-    ["About Us", "/"],
+    ["About Us", ""],
     // ["Categories", "/"],
     ["Products", "/product"],
   ];
